@@ -9,8 +9,8 @@ namespace KafkaRepublish_Utility.Helper
 {
     public class DatabaseHelper
     {
-        string connectionString = null;
-        int commandTimeout = 0;
+        readonly string connectionString = null;
+        readonly int commandTimeout = 0;
         public DatabaseHelper() 
         {
             connectionString = ConfigurationManager.ConnectionStrings[ConfigurationManager.AppSettings["NGSCore_ConnectionStringName"]].ConnectionString;
