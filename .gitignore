@@ -29,3 +29,7 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
+
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+
