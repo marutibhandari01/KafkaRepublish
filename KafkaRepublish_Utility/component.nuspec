@@ -10,6 +10,6 @@
   </metadata>
 
   <files>
-    <file src="KafkaRepublish_Utility\bin\Release\**\*" target=""/>
+    <file src="bin\Release\**\*" target=""/>
   </files>
 </package>
