@@ -4,7 +4,6 @@
     <id>KafkaRepublish_Utility</id>
     <version>$version$</version>
     <authors>mbhandari</authors>
-    <description>KafkaRepublish_Utility</description>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<description>Used to republish the failed kafka messages</description>
     <dependencies />
