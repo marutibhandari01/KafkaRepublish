@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>KafkaRepublish_Utility</id>
+    <version>$version$</version>
+    <authors>mbhandari</authors>
+    <description>KafkaRepublish_Utility</description>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<description>Used to republish the failed kafka messages</description>
+    <dependencies />
+  </metadata>
+
+  <files>
+    <file src="IntellicoreService\bin\Release\**\*" target=""/>
+  </files>
+</package>
