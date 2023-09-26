@@ -51,7 +51,7 @@ namespace KafkaRepublish_Utility.Kafka
                 var value = System.Text.Encoding.ASCII.GetString(bytes);
                 return value;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return string.Empty;
             }

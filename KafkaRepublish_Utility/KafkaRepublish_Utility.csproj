@@ -41,8 +41,8 @@
     <Reference Include="Bokai.Barcodes, Version=3.0.2014.34544, Culture=neutral, PublicKeyToken=35f3c0bbbd3d8604">
       <HintPath>..\packages\Bokai.Barcodes.3.0.2014\lib\Bokai.Barcodes.dll</HintPath>
     </Reference>
-    <Reference Include="Confluent.Kafka, Version=2.2.0.0, Culture=neutral, PublicKeyToken=12c514ca49093d1e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Confluent.Kafka.2.2.0\lib\net462\Confluent.Kafka.dll</HintPath>
+    <Reference Include="Confluent.Kafka, Version=1.5.1.0, Culture=neutral, PublicKeyToken=12c514ca49093d1e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Confluent.Kafka.1.5.1\lib\net46\Confluent.Kafka.dll</HintPath>
     </Reference>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.151\lib\net461\Dapper.dll</HintPath>
