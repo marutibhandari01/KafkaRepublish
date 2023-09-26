@@ -109,8 +109,10 @@ namespace KafkaRepublish_Utility
                         Console.WriteLine($"Error occured in message publishing: {e}");
                     }
                 }
-
-                Console.WriteLine($"Found {errorlogs.Count()} error messages in the logs.");
+                else
+                {
+                    Console.WriteLine($"Found {errorlogs.Count()} error messages in the logs.");
+                }
             }
         }
     }
