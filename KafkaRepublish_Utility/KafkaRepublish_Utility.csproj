@@ -158,6 +158,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FacilityConfig.cs" />
     <Compile Include="Helper\DatabaseHelper.cs" />
     <Compile Include="Kafka\KafkaProducer.cs" />
     <Compile Include="Kafka\PackageInduct.cs" />
@@ -167,6 +168,11 @@
   <ItemGroup>
     <Content Include="App.config" />
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="InductionFacility.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
