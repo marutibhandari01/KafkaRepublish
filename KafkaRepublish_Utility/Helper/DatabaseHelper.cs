@@ -61,18 +61,18 @@ namespace KafkaRepublish_Utility.Helper
             }
         }
 
-        public IEnumerable<string> GetFailedMessages(int hours, bool rerun)
+        public IEnumerable<string> GetFailedMessages(int minutes, bool rerun)
         {
             string sql1 = null;
             var parameter = new DynamicParameters();
-            parameter.Add("@hours", hours, System.Data.DbType.Int32);
+            parameter.Add("@min", minutes, System.Data.DbType.Int32);
             
             if (!rerun)
             {
                 sql1 = @"select logdata from dbo.systemlog (nolock) 
                         where
                         1=1
-                        and logdate > dateadd(hour, -@hours, getdate())
+                        and logdate > dateadd(MINUTE, -@min, getutcdate())
                         and source = 'Newgistics.FastTrakIntegration.Kafka'
                         and Category = 'KafkaProducer'
                         and ComponentFunction = 'ProduceDeliveryReportHandler'
@@ -83,7 +83,7 @@ namespace KafkaRepublish_Utility.Helper
                 sql1 = @"select logdata from dbo.systemlog (nolock) 
                         where
                         1=1
-                        and logdate > dateadd(hour, -@hours, getdate())
+                        and logdate > dateadd(MINUTE, -@min, getutcdate())
                         and source = 'KafkaRepublish_Utility.Kafka'
                         and Category = 'KafkaProducer'
                         and ComponentFunction = 'ProduceDeliveryReportHandler'

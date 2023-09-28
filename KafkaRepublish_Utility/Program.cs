@@ -53,15 +53,15 @@ namespace KafkaRepublish_Utility
                 }
                 else if (args.Length == 3)
                 {
-                    if (int.TryParse(args[0], out int parsedHour) && bool.TryParse(args[1], out bool parsedRerun))
+                    if (int.TryParse(args[0], out int parsedMinute) && bool.TryParse(args[1], out bool parsedRerun))
                     {
-                        int hours = parsedHour;
+                        int minutes = parsedMinute;
                         rerun = parsedRerun;
-                        string facility = args[2];
+                        string facility = args[2].ToUpper();
                         
                         UpdateConfigForFacility(facility);
                         DatabaseHelper dbhelper = new DatabaseHelper();
-                        errorlogs = dbhelper.GetFailedMessages(hours, rerun);
+                        errorlogs = dbhelper.GetFailedMessages(minutes, rerun);
                     }
                 }
                 else
