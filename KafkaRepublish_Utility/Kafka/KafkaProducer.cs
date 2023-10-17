@@ -1,6 +1,5 @@
 ﻿using Confluent.Kafka;
-using Newgistics.Common;
-using Newgistics.Utility;
+using KafkaRepublish_Utility.Helper;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,6 +13,7 @@ namespace KafkaRepublish_Utility.Kafka
     {
         private IProducer<string, string> Producer;
         private Action<DeliveryReport<string, string>> ProducerDeliverReportCallBack = new Action<DeliveryReport<string, string>>(ProduceDeliveryReportHandler);
+        
         public KafkaProducer() { }
 
         public void Setup()
@@ -73,22 +73,18 @@ namespace KafkaRepublish_Utility.Kafka
 
                 if (deliveryreport.Error.Code != ErrorCode.NoError)
                 {
-                    NGSUtilityWrapper.LogMessage(Logger.LogEventType.Error,
-                        NGSERROR.ERR_GENERAL,
-                        $"Error publishing message from KafkaRepublish_Utility to Kafka topic '{deliveryreport.Topic}'. Error: {deliveryreport.Error.Reason}",
+                    Logger.LogMessage("ERROR", $"Error publishing message from KafkaRepublish_Utility to Kafka topic '{deliveryreport.Topic}'. Error: {deliveryreport.Error.Reason}",
                         $"Key: {deliveryreport.Message.Key}. {sb.ToString()} Message: {deliveryreport.Message.Value}");
                 }
                 else
                 {
-                    NGSUtilityWrapper.LogMessage(Logger.LogEventType.Information,
-                        NGSERROR.ERR_SUCCESS,
-                        $"Produced message from KafkaRepublish_Utility to: {deliveryreport.TopicPartitionOffset}",
+                    Logger.LogMessage("SUCCESS", $"Produced message from KafkaRepublish_Utility to: {deliveryreport.TopicPartitionOffset}",
                         $"Key: {deliveryreport.Message.Key}. {sb.ToString()} Message: {deliveryreport.Message.Value}");
                 }
             }
             catch (Exception ex)
             {
-                NGSUtilityWrapper.LogException(ex.Message, NGSERROR.ERR_GENERAL, ex);
+                Logger.LogException(ex.Message, ex);
             }
         }
 
@@ -114,12 +110,7 @@ namespace KafkaRepublish_Utility.Kafka
             }
             catch (Exception ex)
             {
-                NGSUtilityWrapper.LogException(
-                                $"Exception occurred publishing message to Kafka topic '{topic}' from KafkaRepublish_Utility. Error: {ex.Message}" +
-                                $"Key: {key}. " +
-                                $"Message: {bodyString}",
-                                NGSERROR.ERR_GENERAL,
-                                ex);
+                Logger.LogException(ex.Message, ex);
             }
         }
     }
