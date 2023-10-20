@@ -23,7 +23,7 @@ namespace KafkaRepublish_Utility.Helper
             using (HttpClient client = new HttpClient())
             {
                 string apiUrl = "https://api.us2.sumologic.com/api/v1/search/jobs";
-                string query = "_source = \"intellicore-service\" AND NOT _sourceCategory=dev/intellicore/intellicore-service/facility/* \"Error publishing message to Kafka topic\"";
+                string query = "_source = \"intellicore-service\" AND _sourceCategory=prod/intellicore/intellicore-service/* \"Error publishing message to Kafka topic\"";
                 int offset = 0;
                 int limit = 200;
 
