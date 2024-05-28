@@ -13,6 +13,10 @@ nupkg/
 *.user
 *.userosscache
 *.sln.docstates
+*.vsidx
+*.testlog
+*.manifest
+
 
 # Build results
 [Dd]ebug/
