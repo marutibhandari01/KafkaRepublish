@@ -18,8 +18,8 @@ namespace KafkaRepublish_Utility
 
             KafkaProducer producer = new KafkaProducer();
             producer.Setup();
-            SumoHelper sumoHelper = new SumoHelper();
-            List<object> logmessages = new List<object>();
+            ElasticHelper elasticHelper = new ElasticHelper();
+            List<object> logMessages = new List<object>();
             /* 
              * Arguments that can be supplied:
              * 'FromDate' of format yyyy/MM/dd
@@ -35,23 +35,21 @@ namespace KafkaRepublish_Utility
             {
                 fromDate = DateTime.Parse(args[0]).ToString("yyyy-MM-ddTHH:mm:ss");
                 toDate = DateTime.Parse(args[1]).ToString("yyyy-MM-ddTHH:mm:ss");
-                logmessages = sumoHelper.Fetchlogs(fromDate, toDate).Result;
+                logMessages = elasticHelper.Fetchlogs(fromDate, toDate).Result;
             }
             else if(args.Length == 1)
             {
                 fromDate = DateTime.Now.AddMinutes(-(int.Parse(args[0]))).ToString("yyyy-MM-ddTHH:mm:ss");
                 toDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
-                logmessages = sumoHelper.Fetchlogs(fromDate, toDate).Result;
+                logMessages = elasticHelper.Fetchlogs(fromDate, toDate).Result;
             }
 
-            foreach (var logmessage in logmessages)
+            foreach (var logmessage in logMessages)
             {
                 try
                 {
-                    dynamic rawlogdata = JsonConvert.DeserializeObject<dynamic>(logmessage.ToString());
-                    string rawData = rawlogdata.map._raw;
-
-                    string[] lines = rawData.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+                    var log = logmessage.ToString();
+                    string[] lines = log.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
 
                     string[] parts = lines[2].Split(new string[] { "Message: " }, StringSplitOptions.RemoveEmptyEntries);
 
